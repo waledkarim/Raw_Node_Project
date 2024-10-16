@@ -1,6 +1,6 @@
 
-
 const http = require('http');
+const {handleReqRes} = require('./helpers/handleReqRes')
 
 const app = {};
 
@@ -9,14 +9,10 @@ app.config = {
 };
 
 app.createServer = () => {
-    const server = http.createServer(app.handleReqRes);
+    const server = http.createServer(handleReqRes);
     server.listen(app.config.port, () => {
         console.log(`Listening on port: ${app.config.port}`);
     });
-};
-
-app.handleReqRes = (req, res) => {
-    res.end("Hello Worldd");
 };
 
 app.createServer();
